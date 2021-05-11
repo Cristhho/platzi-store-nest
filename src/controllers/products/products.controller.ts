@@ -11,6 +11,7 @@ import {
 
 import { ProductService } from '../../services/product/product.service';
 import { ParseIntPipe } from '../../common/parse-int.pipe';
+import { CreateProductDto, UpdateProductDto } from '../../dtos/product.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -46,7 +47,7 @@ export class ProductsController {
   }
 
   @Post()
-  create(@Body() payload: any) {
+  create(@Body() payload: CreateProductDto) {
     // return {
     //   message: 'product created',
     //   payload,
@@ -55,7 +56,10 @@ export class ProductsController {
   }
 
   @Put(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() payload: any) {
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() payload: UpdateProductDto,
+  ) {
     return this.productService.update(id, payload);
   }
 
