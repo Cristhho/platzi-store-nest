@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 
 import { ProductService } from '../../services/product/product.service';
+import { ParseIntPipe } from '../../common/parse-int.pipe';
 
 @Controller('products')
 export class ProductsController {
@@ -35,7 +36,7 @@ export class ProductsController {
   }
 
   @Get('/:productId')
-  getProduct(@Param('productId') productId: number) {
+  getProduct(@Param('productId', ParseIntPipe) productId: number) {
     // return {
     //   product: {
     //     id: productId,
@@ -54,12 +55,12 @@ export class ProductsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() payload: any) {
+  update(@Param('id', ParseIntPipe) id: number, @Body() payload: any) {
     return this.productService.update(id, payload);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number) {
+  delete(@Param('id', ParseIntPipe) id: number) {
     return this.productService.delete(id);
   }
 }
