@@ -60,9 +60,6 @@ export class ProductsController {
 
   @Delete(':id')
   delete(@Param('id') id: number) {
-    return {
-      message: 'product deleted',
-      id,
-    };
+    return this.productService.delete(id);
   }
 }
