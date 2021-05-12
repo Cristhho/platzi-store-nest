@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 
 import { ProductService } from '../../services/product/product.service';
-import { ParseIntPipe } from '../../common/parse-int.pipe';
+import { ParseIntPipe } from '../../../common/parse-int.pipe';
 import { CreateProductDto, UpdateProductDto } from '../../dtos/product.dto';
 
 @Controller('products')
