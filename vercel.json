@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "alias": ["platzi-store-nest"],
+  "builds": [{ "src": "dist/main.js", "use": "@vercel/node" }],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/main.js"
+    }
+  ]
+}
