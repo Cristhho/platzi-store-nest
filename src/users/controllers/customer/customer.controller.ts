@@ -8,10 +8,12 @@ import {
   Delete,
   ParseIntPipe,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { CustomerService } from '../../services/customer/customer.service';
 import { CreateCustomerDto, UpdateCustomerDto } from '../../dtos/customer.dto';
 
+@ApiTags('customers')
 @Controller('customers')
 export class CustomersController {
   constructor(private customerService: CustomerService) {}
