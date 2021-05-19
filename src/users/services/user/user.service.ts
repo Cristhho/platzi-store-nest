@@ -60,12 +60,12 @@ export class UserService {
     return true;
   }
 
-  getOrdersByUser(id: number) {
+  async getOrdersByUser(id: number) {
     const user = this.findOne(id);
     return {
       date: new Date(),
       user,
-      products: this.productService.findAll(),
+      products: await this.productService.findAll(),
     };
   }
 }

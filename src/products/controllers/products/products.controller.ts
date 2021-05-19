@@ -11,7 +11,6 @@ import {
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 import { ProductService } from '../../services/product/product.service';
-import { ParseIntPipe } from '../../../common/parse-int.pipe';
 import { CreateProductDto, UpdateProductDto } from '../../dtos/product.dto';
 
 @ApiTags('products')
@@ -40,34 +39,22 @@ export class ProductsController {
   }
 
   @Get('/:productId')
-  getProduct(@Param('productId', ParseIntPipe) productId: number) {
-    // return {
-    //   product: {
-    //     id: productId,
-    //   },
-    // };
+  getProduct(@Param('productId') productId: string) {
     return this.productService.findOne(productId);
   }
 
   @Post()
   create(@Body() payload: CreateProductDto) {
-    // return {
-    //   message: 'product created',
-    //   payload,
-    // };
     return this.productService.create(payload);
   }
 
   @Put(':id')
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() payload: UpdateProductDto,
-  ) {
+  update(@Param('id') id: string, @Body() payload: UpdateProductDto) {
     return this.productService.update(id, payload);
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseIntPipe) id: number) {
+  delete(@Param('id') id: string) {
     return this.productService.delete(id);
   }
 }
