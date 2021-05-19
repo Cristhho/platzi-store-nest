@@ -48,4 +48,12 @@ export class FilterProductsDto {
   @IsOptional()
   @Min(0)
   offset: number;
+
+  @IsOptional()
+  @Min(0)
+  minPrice: number;
+
+  @IsOptional()
+  @Min(0)
+  maxPrice: number;
 }
