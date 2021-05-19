@@ -9,6 +9,9 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
       //forbidNonWhitelisted: true, Activate if you want to show errors message associated with the non expected param
     }),
   );
