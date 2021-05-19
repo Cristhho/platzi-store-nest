@@ -1,6 +1,7 @@
 import { Module, HttpModule, HttpService } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
+import { MongoClient } from 'mongodb';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,6 +10,18 @@ import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
 import config from './config';
 import { envs } from './enviroments';
+
+const uri =
+  'mongodb+srv://store_admin:YLZyrNZN73kM4gg8@cluster0-gq1wj.mongodb.net/?retryWrites=true&w=majority';
+const client = new MongoClient(uri);
+async function run() {
+  await client.connect();
+  const database = client.db('platzi_store');
+  const tasksCollection = database.collection('tasks');
+  const tasks = await tasksCollection.find().toArray();
+  console.log(tasks);
+}
+run();
 
 @Module({
   imports: [
