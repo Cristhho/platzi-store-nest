@@ -22,15 +22,16 @@ export class CustomerService {
   }
 
   async create(data: CreateCustomerDto) {
-    console.log(data);
-    const newcustomer = new this.customerModel(data);
-    return await newcustomer.save();
+    const newCustomer = new this.customerModel(data);
+    return await newCustomer.save();
   }
 
   async update(id: string, changes: UpdateCustomerDto) {
     const customer = await this.customerModel
       .findByIdAndUpdate(id, { $set: changes }, { new: true })
       .exec();
+    if (!customer) throw new NotFoundException(`Customer #${id} not found`);
+    return customer;
   }
 
   async remove(id: string) {
