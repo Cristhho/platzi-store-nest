@@ -22,6 +22,7 @@ export class CustomerService {
   }
 
   async create(data: CreateCustomerDto) {
+    console.log(data);
     const newcustomer = new this.customerModel(data);
     return await newcustomer.save();
   }
