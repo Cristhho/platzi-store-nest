@@ -6,6 +6,9 @@ import { CategoriesController } from './controllers/categories/categories.contro
 import { ProductService } from './services/product/product.service';
 import { CategoryService } from './services/category/category.service';
 import { Product, ProductSchema } from './entities/product.entity';
+import { Brand, BrandSchema } from './entities/brand.entity';
+import { BrandsController } from './controllers/brands/brands.controller';
+import { BrandService } from './services/brand/brand.service';
 
 @Module({
   imports: [
@@ -14,10 +17,14 @@ import { Product, ProductSchema } from './entities/product.entity';
         name: Product.name,
         schema: ProductSchema,
       },
+      {
+        name: Brand.name,
+        schema: BrandSchema,
+      },
     ]),
   ],
-  controllers: [ProductsController, CategoriesController],
-  providers: [ProductService, CategoryService],
+  controllers: [ProductsController, CategoriesController, BrandsController],
+  providers: [ProductService, CategoryService, BrandService],
   exports: [ProductService],
 })
 export class ProductsModule {}
