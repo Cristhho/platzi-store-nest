@@ -23,6 +23,7 @@ import { AuthModule } from './auth/auth.module';
         DATA_BASE_HOST: Joi.string().required(),
         DATA_BASE_USER: Joi.string().required(),
         DATA_BASE_PASSWORD: Joi.string().required(),
+        JWT_SECRET: Joi.string().required(),
       }),
     }),
     HttpModule,

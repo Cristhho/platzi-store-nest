@@ -9,5 +9,6 @@ export default registerAs('config', () => {
       password: process.env.DATA_BASE_PASSWORD,
     },
     apiKey: process.env.API_KEY,
+    jwtSecret: process.env.JWT_SECRET,
   };
 });
