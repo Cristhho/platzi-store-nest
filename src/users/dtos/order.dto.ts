@@ -4,7 +4,7 @@ import { OmitType, PartialType } from '@nestjs/swagger';
 export class CreateOrderDto {
   @IsNotEmpty()
   @IsMongoId()
-  readonly customer: string;
+  readonly user: string;
 
   @IsDate()
   @IsNotEmpty()
