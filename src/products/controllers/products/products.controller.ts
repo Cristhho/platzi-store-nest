@@ -19,10 +19,13 @@ import {
 } from '../../dtos/product.dto';
 import { MongoIdPipe } from '../../../common/mongo-id.pipe';
 import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../../../auth/guards/roles.guard';
 import { Public } from '../../../auth/decorators/public.decorator';
+import { Roles } from '../../../auth/decorators/roles.decorator';
+import { Role } from '../../../auth/models/roles.model';
 
 @ApiTags('products')
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('products')
 export class ProductsController {
   constructor(private productService: ProductService) {}
@@ -48,6 +51,7 @@ export class ProductsController {
     return this.productService.findOne(productId);
   }
 
+  @Roles(Role.ADMIN)
   @Post()
   create(@Body() payload: CreateProductDto) {
     return this.productService.create(payload);
