@@ -1,5 +1,12 @@
 node_modules
-.eslintrc
-.prettierrc
+.aws
+.github
+
 Dockerfile
 vercel.json
+Procfile
+.env
+.dockerignore
+.git
+.gitignore
+README.md
